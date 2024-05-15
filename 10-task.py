@@ -34,7 +34,7 @@ class ElectricCar(ElectricVehicle, Engine):
         self.display_battery_info()  # From ElectricVehicle
         print(f"Number of Doors: {self.num_doors}")
 
-# Create an instance of ElectricCar
+#Create an instance of ElectricCar
 my_electric_car = ElectricCar()
 
 # Manually set the attributes
