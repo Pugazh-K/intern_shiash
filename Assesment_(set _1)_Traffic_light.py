@@ -4,7 +4,7 @@ import tkinter as tk
 root = tk.Tk()
 root.title("Automatic Traffic Lights")
 
-
+#Traffic lights
 canvas = tk.Canvas(root, width=200, height=600, bg='black')
 canvas.pack()
 
@@ -33,5 +33,6 @@ def change_light():
 
 canvas.itemconfig(red_light, fill='red')
 root.after(3000, change_light) 
+
 
 root.mainloop()
