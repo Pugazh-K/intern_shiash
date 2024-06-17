@@ -21,7 +21,6 @@ def connect_to_db():
         return None
 
 
-# Function to register a new user
 def register():
     conn = connect_to_db()
     if conn is None:
@@ -30,7 +29,7 @@ def register():
     cursor = conn.cursor()
     username = entry_username.get()
 
-    # Check if username already exists
+
     cursor.execute("SELECT username FROM users WHERE username = %s", (username,))
     if cursor.fetchone():
         messagebox.showinfo("Registration Failed", "Username already exists. Please choose a different username.")
@@ -38,7 +37,6 @@ def register():
         password = entry_password.get()
         confirm_password = entry_confirm_password.get()
         if password == confirm_password:
-            # Insert new user into the database
             cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
             conn.commit()
             messagebox.showinfo("Registration Successful", "User registered successfully!")
@@ -50,7 +48,6 @@ def register():
     conn.close()
 
 
-# Function to authenticate an existing user
 def login():
     conn = connect_to_db()
     if conn is None:
@@ -59,7 +56,6 @@ def login():
     cursor = conn.cursor()
     username = entry_username.get()
 
-    # Check if username exists
     cursor.execute("SELECT password FROM users WHERE username = %s", (username,))
     result = cursor.fetchone()
     if result:
@@ -76,15 +72,11 @@ def login():
     cursor.close()
     conn.close()
 
-
-# Function to clear the entries
 def clear_entries():
     entry_username.delete(0, END)
     entry_password.delete(0, END)
     entry_confirm_password.delete(0, END)
 
-
-# Main function to create the GUI
 def main():
     global entry_username, entry_password, entry_confirm_password
 
